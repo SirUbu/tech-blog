@@ -15,7 +15,7 @@ class Blogger extends Model {
 Blogger.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
             defaultValue: uniqid('T-', '-B'),
@@ -60,7 +60,6 @@ Blogger.init(
             }
         },
         sequelize,
-        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'blogger'
