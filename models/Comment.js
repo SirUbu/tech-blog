@@ -3,26 +3,21 @@ const { Model, DataTypes } = require ('sequelize');
 const uniqid = require('uniqid');
 const sequelize = require('../config/connection');
 
-// create Blog model
-class Blog extends Model {
-    // logic to addFeel will go here
-};
+// create Comment model
+class Comment extends Model {};
 
-Blog.init(
+Comment.init(
     {
         id: {
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            defaultValue: uniqid('Bl-', '-og'),
+            defaultValue: uniqid('C-', '-T'),
             unique: true
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        context: {
+        comment_text: {
             type: DataTypes.STRING(500),
+            allowNull: false,
             validate: {
                 len: [1]
             }
@@ -33,15 +28,22 @@ Blog.init(
                 model: 'blogger',
                 key: 'id'
             }
+        },
+        blog_id: {
+            type: DataTypes.STRING,
+            references: {
+                model: 'blog',
+                key: 'id'
+            }
         }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'blog'
+        modelName: 'comment'
     }
 );
 
-// export Blog model
-module.exports = Blog;
+// export Comment model
+module.exports = Comment;
