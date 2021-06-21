@@ -5,16 +5,46 @@ const sequelize = require('../config/connection');
 
 // create Blog model
 class Blog extends Model {
-    // logic to addFeel will go here
+    // add static addFeels operation
+    static addFeels(body, models) {
+        return models.Feel.create({
+            blogger_id: body.blogger_id,
+            blog_id: body.blog_id
+        }).then(() => {
+            return Blog.findOne({
+                where: {
+                    id: body.blog_id
+                },
+                attributes: [
+                    'id',
+                    'title',
+                    'context',
+                    'created_at',
+                    [sequelize.literal('(SELECT COUNT(*) FROM feel WHERE blog.id = feel.blog_id)'), 'feel_total']
+                ],
+                include: [
+                    {
+                        model: models.Comment,
+                        attributes: ['id', 'comment_text', 'blog_id', 'blogger_id', 'created_at'],
+                        include: {
+                            model: models.Blogger,
+                            attributes: ['username']
+                        }
+                    }
+                ]
+            });
+        });
+    }
 };
 
 Blog.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            defaultValue: uniqid('Bl-', '-og'),
+            // defaultValue: uniqid('Bl-', '-og'),
+            autoIncrement: true,
             unique: true
         },
         title: {
@@ -28,7 +58,7 @@ Blog.init(
             }
         },
         blogger_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'blogger',
                 key: 'id'

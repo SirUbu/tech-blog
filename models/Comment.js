@@ -9,10 +9,11 @@ class Comment extends Model {};
 Comment.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            defaultValue: uniqid('C-', '-T'),
+            autoIncrement: true,
+            // defaultValue: uniqid('C-', '-T'),
             unique: true
         },
         comment_text: {
@@ -23,14 +24,14 @@ Comment.init(
             }
         },
         blogger_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'blogger',
                 key: 'id'
             }
         },
         blog_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'blog',
                 key: 'id'

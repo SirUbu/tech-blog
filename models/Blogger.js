@@ -15,10 +15,11 @@ class Blogger extends Model {
 Blogger.init(
     {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            defaultValue: uniqid('T-', '-B'),
+            // defaultValue: uniqid('T-', '-B'),
+            autoIncrement: true,
             unique: true
         },
         username: {
