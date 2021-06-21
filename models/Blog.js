@@ -1,6 +1,5 @@
 // require dependencies
 const { Model, DataTypes } = require ('sequelize');
-const uniqid = require('uniqid');
 const sequelize = require('../config/connection');
 
 // create Blog model
@@ -43,8 +42,6 @@ Blog.init(
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            defaultValue: uniqid('Bl-', '-og'),
-            // autoIncrement: true,
             unique: true
         },
         title: {
