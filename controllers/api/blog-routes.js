@@ -101,7 +101,6 @@ router.put('/addFeel', (req, res) => {
     });
 });
 
-
 // DELETE a blog
 router.delete('/:id', (req, res) => {
     Blog.destroy({

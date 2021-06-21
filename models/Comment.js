@@ -1,6 +1,5 @@
 // require dependencies
 const { Model, DataTypes } = require ('sequelize');
-const uniqid = require('uniqid');
 const sequelize = require('../config/connection');
 
 // create Comment model
@@ -12,8 +11,6 @@ Comment.init(
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            // autoIncrement: true,
-            defaultValue: uniqid('C-', '-T'),
             unique: true
         },
         comment_text: {
