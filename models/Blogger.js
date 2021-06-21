@@ -1,7 +1,6 @@
 // require dependencies
 const { Model, DataTypes } = require ('sequelize');
 const bcrypt = require('bcrypt');
-const uniqid = require('uniqid');
 const sequelize = require('../config/connection');
 
 // create the Blogger model
@@ -15,11 +14,9 @@ class Blogger extends Model {
 Blogger.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            // defaultValue: uniqid('T-', '-B'),
-            autoIncrement: true,
             unique: true
         },
         username: {

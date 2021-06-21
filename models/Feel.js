@@ -9,22 +9,22 @@ class Feel extends Model {};
 Feel.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true,
-            // defaultValue: uniqid('F-', '-l'),
+            // autoIncrement: true,
+            defaultValue: uniqid('F-', '-l'),
             unique: true
         },
         blogger_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             references: {
                 model: 'blogger',
                 key: 'id'
             }
         },
         blog_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             references: {
                 model: 'blog',
                 key: 'id'

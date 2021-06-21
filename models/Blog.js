@@ -5,8 +5,8 @@ const sequelize = require('../config/connection');
 
 // create Blog model
 class Blog extends Model {
-    // add static addFeels operation
-    static addFeels(body, models) {
+    // add static addFeel operation
+    static addFeel(body, models) {
         return models.Feel.create({
             blogger_id: body.blogger_id,
             blog_id: body.blog_id
@@ -40,11 +40,11 @@ class Blog extends Model {
 Blog.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            // defaultValue: uniqid('Bl-', '-og'),
-            autoIncrement: true,
+            defaultValue: uniqid('Bl-', '-og'),
+            // autoIncrement: true,
             unique: true
         },
         title: {
@@ -58,7 +58,7 @@ Blog.init(
             }
         },
         blogger_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             references: {
                 model: 'blogger',
                 key: 'id'

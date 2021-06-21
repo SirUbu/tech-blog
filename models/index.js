@@ -14,6 +14,20 @@ Blog.belongsTo(Blogger, {
     onDelete: 'SET NULL'
 });
 
+Blogger.belongsToMany(Blog, {
+    through: Feel,
+    as: 'blogger_feels',
+    foreignKey: 'blogger_id',
+    onDelete: 'SET NULL'
+});
+
+Blog.belongsToMany(Blogger, {
+    through: Feel,
+    as: 'blogger_feels',
+    foreignKey: 'blog_id',
+    onDelete: 'SET NULL'
+});
+
 Comment.belongsTo(Blogger, {
     foreignKey: 'blogger_id',
     onDelete: 'SET NULL'
@@ -31,20 +45,6 @@ Blogger.hasMany(Comment, {
 
 Blog.hasMany(Comment, {
     foreignKey: 'blog_id'
-});
-
-Blogger.belongsToMany(Blog, {
-    through: Feel,
-    as: 'blogger_feels',
-    foreignKey: 'blogger_id',
-    onDelete: 'SET NULL'
-});
-
-Blog.belongsToMany(Blogger, {
-    through: Feel,
-    as: 'blogger_feels',
-    foreignKey: 'blog_id',
-    onDelete: 'SET NULL'
 });
 
 Feel.belongsTo(Blogger, {
