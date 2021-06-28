@@ -52,7 +52,7 @@ Blogger.init(
                 newBloggerData.password = await bcrypt.hash(newBloggerData.password, 10);
                 return newBloggerData
             },
-            async beforeCreate(updatedBloggerData) {
+            async beforeUpdate(updatedBloggerData) {
                 updatedBloggerData.password = await bcrypt.hash(updatedBloggerData.password, 10);
                 return updatedBloggerData;
             }

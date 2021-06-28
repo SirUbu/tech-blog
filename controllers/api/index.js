@@ -8,8 +8,8 @@ const commentRoutes = require('./comment-routes');
 
 // set url path
 router.use('/bloggers', bloggerRoutes);
-// router.use('/blogs', blogRoutes);
-// router.use('/comments', commentRoutes);
+router.use('/blogs', blogRoutes);
+router.use('/comments', commentRoutes);
 
 
 // export all router routes

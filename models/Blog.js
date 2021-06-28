@@ -1,12 +1,14 @@
 // require dependencies
 const { Model, DataTypes } = require ('sequelize');
 const sequelize = require('../config/connection');
+const uniqid = require('uniqid');
 
 // create Blog model
 class Blog extends Model {
     // add static addFeel operation
     static addFeel(body, models) {
         return models.Feel.create({
+            id: uniqid('F-', '-l'),
             blogger_id: body.blogger_id,
             blog_id: body.blog_id
         }).then(() => {

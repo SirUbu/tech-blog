@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
                 attributes: ['username']
             }
         ],
-        order: ['created_at', 'DESC']
+        order: [['created_at', 'DESC']]
     }).then(dbBlogData => res.json(dbBlogData)
     ).catch(err => {
         console.log(err);
@@ -100,6 +100,21 @@ router.put('/addFeel', (req, res) => {
         res.status(400).json(err);
     });
 });
+
+// PUT update a blog
+router.put('/:id', (req, res) => {
+    Blog.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    }).then(dbBlogData => {
+        if (!dbBlogData) {
+            res.status(404).json({ message: 'There is no blog with that id.' });
+            return;
+        }
+        res.status(200).json({ message: 'Blog updated successfully.' })
+    })
+})
 
 // DELETE a blog
 router.delete('/:id', (req, res) => {

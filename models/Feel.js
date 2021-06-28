@@ -1,6 +1,5 @@
 // require dependencies
 const { Model, DataTypes } = require ('sequelize');
-const uniqid = require('uniqid');
 const sequelize = require('../config/connection');
 
 // create Feel model
@@ -12,8 +11,6 @@ Feel.init(
             type: DataTypes.STRING,
             primaryKey: true,
             allowNull: false,
-            // autoIncrement: true,
-            defaultValue: uniqid('F-', '-l'),
             unique: true
         },
         blogger_id: {
