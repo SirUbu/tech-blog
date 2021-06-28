@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubu Tech Talk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body class="bg-light">
+  <div class="wrapper">
+    <header class="p-2 bg-secondary">
+      <h1>
+        <a href="/">Ubu Tech Talk</a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+        <a href="/dashboard">Your Dash</a>
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+    </header>
+
+    <main>
+      {{{ body }}}
+    </main>
+
+    <footer class="bg-secondary">
+      <div>&copy;Sir Ubu <bdo dir="rtl">&copy;Sir Ubu</bdo></div>
+    </footer>
+  </div>
+  
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>

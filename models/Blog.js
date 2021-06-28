@@ -21,7 +21,7 @@ class Blog extends Model {
                     'title',
                     'context',
                     'created_at',
-                    [sequelize.literal('(SELECT COUNT(*) FROM feel WHERE blog.id = feel.blog_id)'), 'feel_total']
+                    [sequelize.literal('(SELECT COUNT(*) FROM feel WHERE blog.id = feel.blog_id)'), 'feel_count']
                 ],
                 include: [
                     {
