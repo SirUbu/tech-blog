@@ -77,7 +77,7 @@ router.get('/:id', (req, res) => {
 });
 
 // POST create a new blog
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
    let id = uniqid('Bl-', '-og');
     Blog.create({
         id: id,
@@ -92,7 +92,7 @@ router.post('/', (req, res) => {
 });
 
 // PUT addFeel a blog
-router.put('/addFeel', (req, res) => {
+router.put('/addFeel', withAuth, (req, res) => {
     Blog.addFeel({ ...req.body, blogger_id: req.session.blogger_id }, { Feel, Comment, Blogger }
     ).then(updatedBlogData => res.status(201).json(updatedBlogData)
     ).catch(err => {
@@ -102,7 +102,7 @@ router.put('/addFeel', (req, res) => {
 });
 
 // PUT update a blog
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Blog.update(req.body, {
         where: {
             id: req.params.id
@@ -117,7 +117,7 @@ router.put('/:id', (req, res) => {
 })
 
 // DELETE a blog
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Blog.destroy({
         where: {
             id: req.params.id

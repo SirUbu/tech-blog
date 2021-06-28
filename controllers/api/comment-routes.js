@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
     Comment.create({
         id: id,
         comment_text: req.body.comment_text,
-        blogger_id: req.session.user_id,
+        blogger_id: req.session.blogger_id,
         blog_id: req.body.blog_id
     }).then(dbCommentData => res.status(201).json({ comment_id: dbCommentData.id, message: 'Comment created successfully.' })
     ).catch(err => {

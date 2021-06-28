@@ -41,6 +41,15 @@ router.get('/', (req, res) => {
     });
 });
 
+// route for login/signup page
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
+
 // route to get blog when comments clicked on
 router.get('/blog/:id', (req, res) => {
     Blog.findOne({

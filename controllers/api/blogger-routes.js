@@ -124,7 +124,7 @@ router.post('/logout', (req, res) => {
 });
 
 // PUT update a blogger
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Blogger.update(req.body, {
         individualHooks: true,
         where: {
@@ -143,7 +143,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE a blogger
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Blogger.destroy({
         where: {
             id: req.params.id
