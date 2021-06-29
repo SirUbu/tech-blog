@@ -83,7 +83,7 @@ router.post('/', withAuth, (req, res) => {
         id: id,
         title: req.body.title,
         context: req.body.context,
-        blogger_id: req.session.user_id
+        blogger_id: req.session.blogger_id
     }).then(dbBlogData => res.status(201).json({ title: dbBlogData.title, message: 'Blog created successfully.' })
     ).catch(err => {
         console.log(err);

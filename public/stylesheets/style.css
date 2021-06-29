@@ -170,9 +170,13 @@ main {
 }
   
 .new-blog-form input {
-    width: 300px;
+    width: 90%;
 }
   
+.edit-blog-form input {
+    width: 90%;
+}
+
 .edit-blog-form {
     margin-bottom: 5%;
 }

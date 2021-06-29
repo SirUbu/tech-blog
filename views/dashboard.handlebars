@@ -1,0 +1,33 @@
+<section>
+    <h2>Create New Blog</h2>
+
+    <form class="new-blog-form">
+        <div>
+            <label for="blog-title">Title</label>
+            <input type="text" id="blog-title" name="blog-title" />
+        </div>
+        <div>
+            <label for="blog-context">Context</label>
+            <input type="text" id="blog-context" name="blog-context" />
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</section>
+
+<h2>Your Blogs</h2>
+{{#if blogs.length}}
+<section>
+    <div>
+        {{#each blogs as |blog|}}
+        <div>
+            <a href="/dashboard/edit/{{blog.id}}" class="edit-divnk">Edit Blog</a>
+            {{> blog-info blog}}
+        </div>
+        {{/each}}
+    </div>
+</section>
+{{else}}
+<div>You don't have any blogs... get blogging already!</div>
+{{/if}}
+
+<script src="/javascript/add-blog.js"></script>

@@ -1,0 +1,41 @@
+<article>
+    <a href="/dashboard"> &larr; Back to Dashboard</a>
+    <h2>
+        Edit Blog
+    </h2>
+    <form class="edit-blog-form">
+        <div>
+            <label for="blog-title">Title</label>
+            <input type="text" name="blog-title" value="{{blog.title}}" />
+        </div>
+        <div>
+            <label for="blog-context">Context</label>
+            <input type="text" name="blog-context" value="{{blog.context}}" />
+        </div>
+        <div>
+            {{blog.feel_count}} {{format_plural "feel" blog.feel_count}}
+            |
+            YOU BLOGGED THIS ON: {{format_date blog.created_at}}
+            |
+            <a href="/blog/{{blog.id}}">{{blog.comments.length}} {{format_plural "comment" blog.comments.length}}</a>
+        </div>
+        <button type="submit">Save Blog</button>
+        <button type="button" class="delete-blog-btn">Delete Blog</button>
+    </form>
+</article>
+
+<form class="comment-form">
+    <div>
+        <textarea name="comment-body"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Add Comment</button>
+    </div>
+</form>
+
+{{> comments blog.comments}}
+
+<script src="/javascript/edit-blog.js"></script>
+<script src="/javascript/delete-blog.js"></script>
+<script src="/javascript/comment.js"></script>
