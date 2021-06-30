@@ -1,7 +1,7 @@
 
 # Tech Blog
 ## Description
-A live site to blog about different tehcnology. Create an account to add comments to different blogs as well as create your own blog post. If you're feelin' a blog, drop a "Feel" on it!
+A live site to blog about different technology. Create an account to add comments to different blogs as well as create your own blog post. If you're feelin' a blog, drop a "Feel" on it!
 
 ## Table of Contents
 * [Usage](#usage)
