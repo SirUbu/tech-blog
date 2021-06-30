@@ -13,7 +13,10 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
     secret: 'Ubu Walkie Talkie',
-    cookie: {},
+    cookie: {
+        maxage: 60000
+    },
+    expires: new Date(Date.now() + 60000),
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
